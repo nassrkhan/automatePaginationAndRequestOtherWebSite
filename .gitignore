@@ -1,3 +1,5 @@
 # Ignore environment file
 .env
-env/git add .gitignore
+env/
+*.env
+env/.env.example
