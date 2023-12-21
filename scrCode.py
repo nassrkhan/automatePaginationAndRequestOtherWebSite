@@ -3,6 +3,24 @@ import requests
 from urllib.parse import urljoin
 import time
 import csv
+import pandas as pd
+
+def extract_all_product_links(base_url):
+    all_product_links = []
+
+    # Loop through pages (assuming there are 10 pages, you can modify the range accordingly)
+    for page_number in range(1, 35):
+        # Construct the URL for the current page
+        page_url = f'{base_url}?page={page_number}'
+        
+        # Call the products_links function for the current page
+        product_links_on_page = products_links(page_url)
+        
+        # Append the product links to the overall list
+        all_product_links.extend(product_links_on_page)
+
+    return all_product_links
+
 
 def products_links(url):
     response = requests.get(url)
@@ -129,9 +147,11 @@ def Product_details(links):
 
 #main Function
 if __name__=="__main__": 
-    # url = input("Enter Url: ")
-    url = 'https://watchcollectors.co.uk/collections/all'
-    all_links = products_links(url)
-    print(all_links)
-    details = Product_details(all_links)
+    # url = 'https://watchcollectors.co.uk/collections/all'
+    base_url = 'https://watchcollectors.co.uk/collections/all'
+    all_product_links = extract_all_product_links(base_url)
+    print(all_product_links)
+    # all_links = products_links(url)
+    # print(all_links)
+    details = Product_details(all_product_links)
     print(details)
