@@ -28,15 +28,6 @@ cd your-repository
 pip install -r requirements.txt
 ```
 
-## Usage
-
-1. Run the scripts by executing the Python files in your terminal or command prompt:
-
-```bash
-python web_scrape_products.py
-python web_scrape_brands.py
-```
-
 2. Follow the on-screen instructions or check the script's comments for additional details.
 
 ## Scripts
